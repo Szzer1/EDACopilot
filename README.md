@@ -36,11 +36,11 @@ Note: Update your own ```OPENAI_API_KEY``` and ```OPENAI_API_URL``` in ```.env``
 ```
 cd EDACopilot/generation
 ```
-####1) For QA pairs in text format
+- For QA pairs in text format
 ```
 python qa_generation.py
 ```
-####2) For script-style format
+- For script-style format
 ```
 python script_format_generation.py
 ```
