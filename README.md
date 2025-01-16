@@ -84,10 +84,10 @@ Note: Again, update ```OPENAI_API_KEY``` and ```OPENAI_API_URL``` and modify the
 If this work has been helpful to you, we would greatly appreciate your citation.
 ```
 @article{edacopilot,
-	  author = {Zhe Xiao, Xu He, HaoYing Wu, Yang Guo and Bei Yu},
-	  title = {EDA-Copilot: A RAG-Powered Intelligent Assistant for EDA Tools},
-	  journal={},
-	  year={2025}
+  author = {Zhe Xiao, Xu He, HaoYing Wu, Yang Guo and Bei Yu},
+  title = {EDA-Copilot: A RAG-Powered Intelligent Assistant for EDA Tools},
+  journal={},
+  year={2025}
 }
 ```
 ```
