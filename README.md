@@ -1,7 +1,9 @@
 # EDACopilot
 This repository hosts the corpus generation, dataset examples to use RAG that serve as chatbots to EDA tool.
-##Paper
+
+## Paper
 EDA-Copilot: A RAG-Powered Intelligent Assistant for EDA Tools (In submission)
+
 ## Content
 1) For existing open-source QA datasets, the dummy datasets are uploaded in this repo and can be found [here](https://github.com/Szzer1/EDACopilot/tree/main/trans_format/processed_data)
 2) For the code that converts open-source QA datasets to the required format, the code are uploaded in this repo and can be found [here](https://github.com/Szzer1/EDACopilot/tree/main/trans_format)
