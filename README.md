@@ -1,6 +1,7 @@
 # EDACopilot
 This repository hosts the corpus generation, dataset examples to use RAG that serve as chatbots to EDA tool.
-
+##Paper
+EDA-Copilot: A RAG-Powered Intelligent Assistant for EDA Tools (In submission)
 ## Content
 1) For existing open-source QA datasets, the dummy datasets are uploaded in this repo and can be found [here](https://github.com/Szzer1/EDACopilot/tree/main/trans_format/processed_data)
 2) For the code that converts open-source QA datasets to the required format, the code are uploaded in this repo and can be found [here](https://github.com/Szzer1/EDACopilot/tree/main/trans_format)
@@ -14,7 +15,7 @@ This repository hosts the corpus generation, dataset examples to use RAG that se
 
 #### 1. Clone this repo
 ```
-git clone "https://github.com/Szzer1/EDACopilot.gitt"
+git clone "https://github.com/Szzer1/EDACopilot.git"
 ```
 
 
@@ -22,6 +23,7 @@ git clone "https://github.com/Szzer1/EDACopilot.gitt"
 ```
 conda create -n EDACopilot
 conda activate EDACopilot
+cd EDACopilot
 pip install -r requirements.txt
 ```
 
@@ -77,3 +79,23 @@ Note: Again, update ```OPENAI_API_KEY``` and ```OPENAI_API_URL``` and modify the
 }
 ```
 
+##Citing this work
+
+If this work has been helpful to you, we would greatly appreciate your citation.
+```
+@article{edacopilot,
+	  author = {Zhe Xiao, Xu He, HaoYing Wu, Yang Guo and Bei Yu},
+	  title = {EDA-Copilot: A RAG-Powered Intelligent Assistant for EDA Tools},
+	  journal={},
+	  year={2025}
+}
+```
+```
+@misc{edacopilot,
+  author = {Zhe Xiao, Xu He, HaoYing Wu, Yang Guo and Bei Yu},
+  title = {EdaCopilot Repository},
+  year = {2025},
+  url = {https://github.com/Szzer1/EDACopilot},
+  note = {Accessed: 20xx-xx-xx}
+}
+```
