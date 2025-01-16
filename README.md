@@ -46,7 +46,7 @@ python script_format_generation.py
 ```
 Note: Again, update ```OPENAI_API_KEY``` and ```OPENAI_API_URL``` and modify the input and output paths in ```qa_generation``` and ```script_format_generation```.
 
-## 示例
+## Example
 ### For QA-pair format
 ```
 {
