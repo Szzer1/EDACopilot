@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from langchain.docstore.document import Document
 
 doc_list = ['amaranth', 'Icarus_verilog', 'klayout', 'qflow', 'OpenROAD', 'OpenSTA', 'OpenROAD_flow_script',
-            'verilator', 'yosys_hq']
+            'verilator', 'yosys_hq', 'iverilog']
 
 
 def load_html(
@@ -55,6 +55,20 @@ def load_docs(folder_path: str):
     return documents
 
 
+def load_text(folder_path: str):
+    text_files = glob.glob(os.path.join(folder_path, '**/*.txt'), recursive=True)
+    documents = []
+    for file_path in tqdm(text_files, desc='Loading Markdown files'):
+        source = ''
+        for item in doc_list:
+            if item in file_path:
+                source = item
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            documents.append([Document(page_content=content, metadata={'source': source})])
+    return documents
+
+
 def load_pdfs(folder_path: str):
     md_files = glob.glob(os.path.join(folder_path, '**/*.pdf'), recursive=True)
     documents = []
@@ -76,8 +90,8 @@ def load_dataset(folder_path: str):
     html = load_html(folder_path)
     documents = load_docs(folder_path)
     pdfs = load_pdfs(folder_path)
-
-    dataset = html + documents + pdfs
+    texts = load_text(folder_path)
+    dataset = html + documents + pdfs + texts
     return dataset
 
 

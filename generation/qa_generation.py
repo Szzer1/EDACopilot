@@ -1,7 +1,7 @@
 import json
 import random
 import re
-
+import os
 from tqdm import tqdm
 
 import load_data
@@ -53,18 +53,17 @@ def get_api_response_with_retry(prompt, chunk, max_retries=3):
 
 
 if __name__ == '__main__':
-    DATA_PATH = '../data'
+    DATA_PATH = '../data/markdown/OpenROAD_discussions'
     OUTPUT_PATH = './qa_dataset'
+    os.makedirs(OUTPUT_PATH, exist_ok=True)
     # Load and split dataset into chunks
     dataset = load_data.load_dataset(DATA_PATH)
 
     chunk_data = load_data.split_docs(dataset)
     random.shuffle(chunk_data)
-
+    num = 0
     # Main loop to process each chunk of data
     sys_prompt = openai_api.cums_sys_prompt['qa']
-
-    stop_flag = 0
     for chunk in tqdm(chunk_data):
         sys = openai_api.cums_sys_prompt['qa'].replace('{}', chunk.metadata["source"])
         json_result = get_api_response_with_retry(sys, chunk.page_content)
@@ -72,10 +71,12 @@ if __name__ == '__main__':
         # If we got a valid response, process the result
         if json_result:
             for item in json_result:
+                num += len(json_result)
                 item['reference'] = chunk.page_content
                 item['source'] = chunk.metadata["source"]
                 save_to_jsonl(item, OUTPUT_PATH)
-            stop_flag += len(json_result)
         else:
             logging.warning("No valid JSON result returned after retries, skipping this chunk.")
 
+        if num > 30:
+            break
