@@ -53,7 +53,7 @@ def get_api_response_with_retry(prompt, chunk, max_retries=3):
 
 
 if __name__ == '__main__':
-    DATA_PATH = '../data/markdown/OpenROAD_discussions'
+    DATA_PATH = '../data'
     OUTPUT_PATH = './qa_dataset'
     os.makedirs(OUTPUT_PATH, exist_ok=True)
     # Load and split dataset into chunks
