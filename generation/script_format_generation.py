@@ -27,7 +27,7 @@ def extract_json_content(content):
 # Function to save a dictionary to a JSONL file
 def save_to_jsonl(data, output_path):
     try:
-        with open(f'{output_path}/script_dataset_rf_example.jsonl', 'a', encoding='utf-8') as file:
+        with open(f'{output_path}/script_dataset_rf_example1.jsonl', 'a', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False)
             file.write("\n")  # Ensure each entry is on a new line
     except Exception as e:
@@ -53,7 +53,7 @@ def get_api_response_with_retry(prompt, chunk, max_retries=3):
 
 
 if __name__ == '__main__':
-    DATA_PATH = '../data'
+    DATA_PATH = '../data/markdown/OpenROAD_flow_script_docs/general'
     OUTPUT_PATH = './script_dataset'
     os.makedirs(OUTPUT_PATH, exist_ok=True)
     # Load and split dataset into chunks
@@ -63,8 +63,6 @@ if __name__ == '__main__':
     random.shuffle(chunk_data)
 
     # Main loop to process each chunk of data
-
-    stop_flag = 0
 
     for chunk in tqdm(chunk_data):
         sys = openai_api.cums_sys_prompt['script_judge'].replace('{}', chunk.metadata["source"])
@@ -80,7 +78,6 @@ if __name__ == '__main__':
                 item['reference'] = chunk.page_content # Add the reference from the chunk
                 item['source'] = chunk.metadata["source"]
                 save_to_jsonl(item, OUTPUT_PATH)
-            stop_flag += len(script_result)
         else:
             logging.warning("No valid JSON result returned after retries, skipping this chunk.")
 

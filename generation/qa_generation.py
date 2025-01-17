@@ -61,7 +61,6 @@ if __name__ == '__main__':
 
     chunk_data = load_data.split_docs(dataset)
     random.shuffle(chunk_data)
-    num = 0
     # Main loop to process each chunk of data
     sys_prompt = openai_api.cums_sys_prompt['qa']
     for chunk in tqdm(chunk_data):
@@ -77,6 +76,3 @@ if __name__ == '__main__':
                 save_to_jsonl(item, OUTPUT_PATH)
         else:
             logging.warning("No valid JSON result returned after retries, skipping this chunk.")
-
-        if num > 30:
-            break
